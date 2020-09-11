@@ -74,7 +74,7 @@
                 .split("/")
         
                 //:Remove empty strings:
-                .reduce((o,c)=>{if(""!=c){ o.push( c ) };},[])
+                .reduce((o,c)=>{if(c){ o.push( c ) };},[])
 
                 .join("/")
             );;
