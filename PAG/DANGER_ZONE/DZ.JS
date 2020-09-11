@@ -24,7 +24,7 @@ function AHK_NEW_JQueryForm_Post(){ "use strict"
     const _=(_||"")
     ,          I="<input>"
     ,   TXT=$( I ).attr({ "type":"text" })
-    ,   BTN=$( I ).attr({ "type" :"button", "value":"BTN" })
+    ,   BTN=$( I ).attr({ "type":"button", "value":"BTN" })
     ;;
 
     //:Graph/Tree structure only here:
