@@ -5,6 +5,24 @@
     const http = require("http"); //:HTTP
     const   pg = require(  "pg"); //:Database Driver
 
+    /** **************************************************** ***
+
+    Main entry point for server traffic. This function should
+    be small as it is just a helpful wrapper for 
+    ServerTrafficHandler_Core.
+
+    Benifits of this wrapper:
+
+    1. Do not have to remember to call server_res.end()
+       in other parts of code. Server response ends when
+       we get back here.
+    
+    2. ServerTrafficHandler_Core can be async and allows us
+       to simplify waiting on database initialization by 
+       writing[      await InitDatabase()      ]
+        
+
+    *** **************************************************** **/
     function ServerTrafficHandler(
         server_req //:Incomming request  from client.
     ,   server_res //:Outgoing  response from server.
@@ -16,7 +34,6 @@
         ,   server_res
         };;
 
-
         ServerTrafficHandler_Core( sob ).then(()=>{
 
             console.log("[TRAFFIC_HANDLER:DONE]");
@@ -27,11 +44,9 @@
 
         }).finally(()=>{
 
-            sob.server_res.close();
+            sob.server_res.end();
 
         });;
-
-
     };;
 
     //: Had to split off ServerTrafficHandler into a         ://
