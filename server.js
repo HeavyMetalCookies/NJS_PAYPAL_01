@@ -69,7 +69,14 @@
 
             const url_sanitized=(
                 sob.server_req.url
-                .toUpperCase().split("/").join("/")
+                .toUpperCase()
+
+                .split("/")
+        
+                //:Remove empty strings:
+                .reduce((o,c)=>{if(""!=c){ o.push( c ) };},[])
+
+                .join("/")
             );;
             switch( url_sanitized ){ case 
             "IP":{
