@@ -24,14 +24,16 @@ function AHK_NEW_JQueryForm_Post(){ "use strict"
     const _2020_09_11_=""
     ,          I="<input>"
     ,          T="<textarea>"
-    ,   TXT=$( T ).attr({ "cols":"64" , "rows":"128" })
+    ,   T_I=$( T ).attr({ "cols":"64" , "rows":"128" })
     ,   BTN=$( I ).attr({ "type":"button", "value":"BTN" })
+    ,   T_O=$( T ).attr({ "cols":"64" , "rows":"128" })
     ;;
 
     //:Graph/Tree structure only here:
     DOC_BOD.append([
-        TXT
-    ,   BTN
+        T_I //:Text____Input
+    ,   BTN //:Submit_Button
+    ,   T_O //:Text___Output
     ]);
 
 
