@@ -86,7 +86,7 @@
                 sob.server_res.write( "[IP]:(" + IP + ")" );
 
             };break;case 
-            "JQUERY.JS":{
+            "LIB_3RD/JQUERY.JS":{
     
                 await ServeFileSync( 
                 sob , "./LIB_3RD/JQUERY.JS" );;
