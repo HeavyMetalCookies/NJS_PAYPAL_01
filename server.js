@@ -68,7 +68,7 @@
         //:MAIN_REQUEST_TRAFFIC_HANDLING_LOGIC:--------------://
 
             const url_sanitized=(
-                sob.server_req.url
+                ( sob.server_req.url || "" )
                 .toUpperCase()
 
                 .split("/")
