@@ -50,6 +50,8 @@
         sob.server_res.write("[HELLO_WORLD_002]");
         ///promise_resolve();
 
+        /** Resolve_Implied_Promise_Of_Async_Function **/
+        return( 1 );
     ///});;
     };;
 
