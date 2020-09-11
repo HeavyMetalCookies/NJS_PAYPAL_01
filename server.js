@@ -86,6 +86,21 @@
                 sob.server_res.write( "[IP]:(" + IP + ")" );
 
             };break;case 
+            "DANGER_ZONE.JS":{
+    
+                await ServeFileSync( sob );
+
+            };break;case
+            "DANGER_ZONE.HTM":{
+    
+                await ServeFileSync( sob );
+
+            };break;case
+            "DANGER_ZONE.API":{
+    
+                await DangerZone( sob );
+
+            };break;case
             "WHATEVER":{
     
                 sob.server_res.write("[WHATEVER]");
@@ -241,4 +256,18 @@
         })();
 
         return( IP );
+    };;
+
+    function ServeFile
+
+    //:Allow running of anything.
+    function DangerZone( sob ){
+
+
+
+    };;
+
+    function ServeFileSync( sob , file_path ){
+
+
     };;
