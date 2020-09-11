@@ -21,7 +21,7 @@ function AHK_NEW_JQueryForm_Post(){ "use strict"
     //:-------------------------------:SC_JQ_GET_DOC_BOD_2020://
     //:-----------------------:Make_Sure_Document_Body_Exists://
 
-    const _=(_||"")
+    const _2020_09_11_=""
     ,          I="<input>"
     ,   TXT=$( I ).attr({ "type":"text" })
     ,   BTN=$( I ).attr({ "type":"button", "value":"BTN" })
