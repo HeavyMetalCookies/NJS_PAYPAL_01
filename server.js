@@ -81,7 +81,33 @@
             switch( url_sanitized ){ case 
             "IP":{
 
-                sob.server_res.write("[IP]");
+                const IP=(()=>{
+                    var R=( sob.server_req );
+                    var ip=("NOT_SET");
+
+                    if(R.headers['x-forwarded-for']) {
+
+                        ip = R.headers['x-forwarded-for']
+                        .split(",")[0];
+
+                    }else 
+                    if( 1
+                    && R.connection 
+                    && R.connection.remoteAddress
+                    ) {
+
+                        ip = R.connection.remoteAddress;
+
+                    }else{
+
+                        ip = R.ip;
+
+                    };;
+
+                    return( ip );
+                })();
+        
+                sob.server_res.write( "[IP]:" + IP );
 
             };break;case 
             "WHATEVER":{
