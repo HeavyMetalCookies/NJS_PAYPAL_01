@@ -258,7 +258,7 @@
         return( IP );
     };;
 
-    function ServeFile
+ 
 
     //:Allow running of anything.
     function DangerZone( sob ){
