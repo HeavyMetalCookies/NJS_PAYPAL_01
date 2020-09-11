@@ -81,10 +81,9 @@
             switch( url_sanitized ){ case 
             "IP":{
 
-                var ip_data=WhatsMyInternetProtocolAddress(sob);
-                const IP2=( ip_data.IP2 );
+                const IP=WhatsMyInternetProtocolAddress(sob);
         
-                sob.server_res.write( "[IP2]:" + IP2 );
+                sob.server_res.write( "[IP]:(" + IP + ")" );
 
             };break;case 
             "WHATEVER":{
@@ -214,7 +213,8 @@
 
     function WhatsMyInternetProtocolAddress( sob ){
 
-        const IP2=(()=>{
+        /** As an iife so you can inline if you want **/
+        const IP=(()=>{
             var R=( sob.server_req );
             var ip=("NOT_SET");
         
@@ -240,7 +240,5 @@
             return( ip );
         })();
 
-        return({ 
-            IP2:IP2
-        });;
+        return( IP );
     };;
