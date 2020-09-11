@@ -6,7 +6,7 @@
 /** This function does not reference any[ extern / global ]  **/
 /** variables, so it can be cut+pasted as a snippet when     **/
 /** quickly hacking things together.                         **/
-function AHK_NEW_JQueryForm_Post(){
+function AHK_NEW_JQueryForm_Post(){ "use strict"
 
     //:Make_Sure_Document_Body_Exists:-----------------------://
     //:SC_JQ_GET_DOC_BOD_2020:-------------------------------://
@@ -21,7 +21,7 @@ function AHK_NEW_JQueryForm_Post(){
     //:-------------------------------:SC_JQ_GET_DOC_BOD_2020://
     //:-----------------------:Make_Sure_Document_Body_Exists://
 
-    const _=_
+    const _=(_||"")
     ,          I="<input>"
     ,   TXT=$( I ).attr({ "type":"text" })
     ,   BTN=$( I ).attr({ "type" :"button", "value":"BTN" })
