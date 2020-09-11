@@ -3,6 +3,7 @@
 
     const   fs = require(  "fs"); //:File System
     const http = require("http"); //:HTTP
+    const   pg = require(  "pg"); //:Database Driver
 
     function ServerTrafficHandler(
         server_req //:Incomming request  from client.
@@ -15,6 +16,30 @@
         ,   server_res
         };;
 
+
+        ServerTrafficHandler_Core( sob ).then(()=>{
+
+            console.log("[TRAFFIC_HANDLER:DONE]");
+
+        }).catch( (err)=>{
+
+            console.log("[TRAFFIC_HANDLER:ERR]:" + err );
+
+        }).finally(()=>{
+
+            sob.server_res.close();
+
+        });;
+
+
+    };;
+
+    //: Had to split off ServerTrafficHandler into a         ://
+    //: ServerTrafficHandler_Core(...) function so that      ://
+    //: We could simplify waiting on database initialization.://
+    async function ServerTrafficHandler_Core( sob ){
+    return new Promise(function( promise_resolve , promise_reject ){
+
         //:If database not initialized, pause here until
         //:the database is initialized.
         if( !database_inited ){ 
@@ -22,10 +47,10 @@
              await InitDatabase( sob );
         };;
 
-        server_res.write("[hello_world]");
-        server_res.end();
+        sob.server_res.write("[HELLO_WORLD_002]");
+        promise_resolve();
 
-    };;
+    });;};;
 
     const SERVER=http.createServer( ServerTrafficHandler );
 
@@ -37,7 +62,7 @@
 
 
     function InitDatabase( sob ){
-    new Promise(function(resolve_promise, reject_promise) {
+    return new Promise(function(resolve_promise, reject_promise) {
 
         fs.readFile( "./SQL/TAB_001.CREATE_IF_NOT_EXISTS.PGSQL"
         ,( err, dat )=>{
@@ -87,6 +112,16 @@
                 //:--------------:QUERY_TEXT_WILL_BE_RAN_HERE://
             };;
         });;
-    };;};;
+    });;};;
 
 
+
+    function-returning-promise
+    func-returns-promise
+    function-that-returns-promise
+
+    
+    await-only-valid-inside-async-functions
+
+
+    wait-for-promise-to-resolve-synchronously
