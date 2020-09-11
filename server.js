@@ -67,12 +67,11 @@
 
         //:MAIN_REQUEST_TRAFFIC_HANDLING_LOGIC:--------------://
 
-            
-
-            switch( 
+            const url_sanitized=(
                 sob.server_req.url
                 .toUpperCase().split("/").join("/")
-            ){ case 
+            );;
+            switch( url_sanitized ){ case 
             "IP":{
 
                 sob.server_res.write("[IP]");
@@ -89,7 +88,9 @@
 
             };break;default:{
 
-                sob.server_res.write("[default]");
+                sob.server_res.write(
+                    "[default:url_sanitized]:"+url_sanitized
+                );;
 
             };;};;
 
