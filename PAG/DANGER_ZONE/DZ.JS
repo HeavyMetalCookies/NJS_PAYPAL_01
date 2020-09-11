@@ -23,13 +23,12 @@ function AHK_NEW_JQueryForm_Post(){
 
     const _=_
     ,          I="<input>"
-    ,   BOD=DOC_BOD 
     ,   TXT=$( I ).attr({ "type":"text" })
     ,   BTN=$( I ).attr({ "type" :"button", "value":"BTN" })
     ;;
 
     //:Graph/Tree structure only here:
-    BOD.append([
+    DOC_BOD.append([
         TXT
     ,   BTN
     ]);
