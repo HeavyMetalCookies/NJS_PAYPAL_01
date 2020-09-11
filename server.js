@@ -92,13 +92,13 @@
                 sob , "./LIB_3RD/JQUERY.JS" );;
 
             };break;case
-            "DANGER_ZONE.JS":{
+            "/PAG/DANGER_ZONE/DZ.JS":{
     
                 await ServeFileSync( 
                 sob , "./PAG/DANGER_ZONE/DZ.JS" );;
 
             };break;case
-            "DANGER_ZONE.HTM":{
+            "/PAG/DANGER_ZONE/DZ.HTM":{
     
                 await ServeFileSync( 
                 sob , "./PAG/DANGER_ZONE/DZ.HTM" );;
