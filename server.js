@@ -53,21 +53,29 @@
     //: ServerTrafficHandler_Core(...) function so that      ://
     //: We could simplify waiting on database initialization.://
     async function ServerTrafficHandler_Core( sob ){
-    ///return new Promise(function( promise_resolve , promise_reject ){
 
         //:If database not initialized, pause here until
         //:the database is initialized.
-        if( !database_inited ){ 
-             database_inited=(true);
-             await InitDatabase( sob );
+        if(!database_inited ){ 
+            database_inited=(true);
+            console.log("[ABOUT_TO::InitDatabase()]");
+
+            await InitDatabase( sob );
+
+            console.log("[BACK_FROM:InitDatabase()]");
         };;
 
-        sob.server_res.write("[HELLO_WORLD_002]");
-        ///promise_resolve();
+        //:MAIN_REQUEST_TRAFFIC_HANDLING_LOGIC:--------------://
+
+
+            sob.server_res.write("[HELLO_WORLD_002]");
+
+
+        //:--------------:MAIN_REQUEST_TRAFFIC_HANDLING_LOGIC://
 
         /** Resolve_Implied_Promise_Of_Async_Function **/
         return( 1 );
-    ///});;
+
     };;
 
     const SERVER=http.createServer( ServerTrafficHandler );
@@ -134,7 +142,7 @@
     
         ).then(     ( pg_res )=>{
     
-            //:Okay. Do nothing.
+            console.log("[DATABASE_INIT_SUCCESS]");
     
         }).catch(   ( pg_err )=>{
     
