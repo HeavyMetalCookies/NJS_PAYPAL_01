@@ -38,7 +38,7 @@
     //: ServerTrafficHandler_Core(...) function so that      ://
     //: We could simplify waiting on database initialization.://
     async function ServerTrafficHandler_Core( sob ){
-    return new Promise(function( promise_resolve , promise_reject ){
+    ///return new Promise(function( promise_resolve , promise_reject ){
 
         //:If database not initialized, pause here until
         //:the database is initialized.
@@ -48,9 +48,10 @@
         };;
 
         sob.server_res.write("[HELLO_WORLD_002]");
-        promise_resolve();
+        ///promise_resolve();
 
-    });;};;
+    ///});;
+    };;
 
     const SERVER=http.createServer( ServerTrafficHandler );
 
