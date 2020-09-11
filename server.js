@@ -63,68 +63,93 @@
     SERVER.listen( process.env.PORT || 5190 /**AIM_PORT**/ );
 
 
+    /** **************************************************** ***
 
-    function InitDatabase( sob ){
-    return new Promise(function(resolve_promise, reject_promise) {
+    Initializes database tables if they do not exist yet.
 
-        fs.readFile( "./SQL/TAB_001.CREATE_IF_NOT_EXISTS.PGSQL"
-        ,( err, dat )=>{
-            if( err ){
-                reject_promise( "[FILE_READ_ERROR]" );
-            }else{
+    With all this boilerplate, we could make a helper function
+    that reads from a file and then executes a database query.
+    However, such helper functions add an extra layer of    
+    [abstraction/indirection] to the code and things get hard
+    to follow quickly. (In my experience.)
 
-                var QUERY_TEXT_WILL_BE_RAN_HERE=( 
-                    dat.toString() 
-                );;
+    *** **************************************************** **/
+    function InitDatabase( //:-------------------------------://
 
-                //:QUERY_TEXT_WILL_BE_RAN_HERE:--------------://
+        sob //:server_req & server_res
 
-                var pg_client = new pg.Client({
-                    connectionString:( 
-                        process.env.DATABASE_URL
-                    )
-                    ,
-                    ssl:( 
-                        {rejectUnauthorized:false}  
-                    )
-                });;
+    ){ 
+    return new Promise(function(
 
-                pg_client.connect();
-                pg_client.query( 
+        //:These functions supplied
+        //:by node.js runtime.
+        resolve_promise  
+    ,   reject_promise   
 
-                    QUERY_TEXT_WILL_BE_RAN_HERE
+    ){
+    fs.readFile( 
 
-                ).then(     ( pg_res )=>{
+        "./SQL/TAB_001.CREATE_IF_NOT_EXISTS.PGSQL"
 
-                    //:Okay. Do nothing.
+    ,( err, create_if_not_exists )=>{ if( err ){ 
 
-                }).catch(   ( pg_err )=>{
+        reject_promise( "[FILE_READ_ERROR]" );
 
-                    reject_promise("[DATABASE_SETUP:FAIL]");
-
-                }).finally( (        )=>{
-
-                    //: Wait here to close connection. - - - ://
-                    //: When "end()" called without a  - - - ://
-                    //: callback parameter,            - - - ://
-                    //: it returns a promise.          - - - ://
-                    await pg_client.end(); 
-                    resolve_promise();
-                });;
-
-                //:--------------:QUERY_TEXT_WILL_BE_RAN_HERE://
-            };;
-        });;
-    });;};;
-
-
-
-    function-returning-promise
-    func-returns-promise
-    function-that-returns-promise
-
+    }else{ //:-----------------------------------------------://
+    //:------------------------------------------------------://
+    //:             BEGIN:DATABASE_OPERATIONS:               ://
+    //:------------------------------------------------------://
     
-    await-only-valid-inside-async-functions
+        //::QUERY_TEXT:WILL_BE_RAN_HERE:---------------------://
+    
+        var pg_client = new pg.Client({
+            connectionString:( 
+                process.env.DATABASE_URL
+            )
+            ,
+            ssl:( 
+                {rejectUnauthorized:false}  
+            )
+        });;
+    
+        pg_client.connect();
+        pg_client.query( 
+    
+            create_if_not_exists.toString() //:<--[ QUERY_TEXT ]
+    
+        ).then(     ( pg_res )=>{
+    
+            //:Okay. Do nothing.
+    
+        }).catch(   ( pg_err )=>{
+    
+            reject_promise("[DATABASE_SETUP:FAIL]");
+    
+        }).finally( (        )=>{
+    
+            //:Wait here to close connection. When "end()"   ://
+            //:called without a callback parameter,it returns://
+            //:a promise.                                    ://
+            pg_client.end().then(()=>{
+    
+                resolve_promise();
+    
+            }).catch((err)=>{
+    
+                sob.server_res.write(
+                "[FAILED_TO_CLOSE_DATABASE_CONNECTION]"
+                );;
+                reject_promise();
+            });;
+            
+        });;
+    
+        //:----------------------:QUERY_TEXT:WILL_BE_RAN_HERE://
 
-
-    wait-for-promise-to-resolve-synchronously
+    //:------------------------------------------------------://
+    //:               END:DATABASE_OPERATIONS:               ://
+    //:------------------------------------------------------://
+    };;  //:InitDatabase:readFile,err? //:-------------------://
+    });; //:InitDatabase:readFile      //:-------------------://
+    });; //:InitDatabase:PROMISE       //:-------------------://
+    };;  //:InitDatabase:BODY          //:-------------------://
