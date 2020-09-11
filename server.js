@@ -86,16 +86,22 @@
                 sob.server_res.write( "[IP]:(" + IP + ")" );
 
             };break;case 
+            "JQUERY.JS":{
+    
+                await ServeFileSync( 
+                sob , "./LIB_3RD/JQUERY.JS" );;
+
+            };break;case
             "DANGER_ZONE.JS":{
     
                 await ServeFileSync( 
-                sob , "./PAG/DANGER_ZONE.JS" );;
+                sob , "./PAG/DANGER_ZONE/DZ.JS" );;
 
             };break;case
             "DANGER_ZONE.HTM":{
     
                 await ServeFileSync( 
-                sob , "./PAG/DANGER_ZONE.HTM" );;
+                sob , "./PAG/DANGER_ZONE/DZ.HTM" );;
 
             };break;case
             "DANGER_ZONE.API":{
