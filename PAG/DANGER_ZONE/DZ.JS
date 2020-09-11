@@ -23,7 +23,8 @@ function AHK_NEW_JQueryForm_Post(){ "use strict"
 
     const _2020_09_11_=""
     ,          I="<input>"
-    ,   TXT=$( I ).attr({ "type":"text" })
+    ,          T="<textarea>"
+    ,   TXT=$( T ).attr({ "cols":"64" , "rows":"128" })
     ,   BTN=$( I ).attr({ "type":"button", "value":"BTN" })
     ;;
 
