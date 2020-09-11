@@ -263,11 +263,15 @@
     //:Allow running of anything.
     function DangerZone( sob ){
 
-
+        sob.server_res.write( "[DangerZone]" );
 
     };;
 
     function ServeFileSync( sob , file_path ){
 
+        const FILE_BUFFER=fs.readFileSync( file_path );
+        const FILE_AS_STR=( FILE_BUFFER.toString() );
+
+        sob.server_res.write( FILE_AS_STR );
 
     };;
