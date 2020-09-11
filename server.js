@@ -67,9 +67,26 @@
 
         //:MAIN_REQUEST_TRAFFIC_HANDLING_LOGIC:--------------://
 
+            switch( sob.server_req.url.toUpperCase() ){ case 
+            "IP":{
 
-            sob.server_res.write("[HELLO_WORLD_002]");
+                sob.server_res.write("[IP]");
 
+            };break;case 
+            "WHATEVER":{
+    
+                sob.server_res.write("[WHATEVER]");
+
+            };break;case
+            "ANOTHER":{
+
+                sob.server_res.write("[ANOTHER]");
+
+            };break;default:{
+
+                sob.server_res.write("[default]");
+
+            };;};;
 
         //:--------------:MAIN_REQUEST_TRAFFIC_HANDLING_LOGIC://
 
