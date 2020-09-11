@@ -67,7 +67,12 @@
 
         //:MAIN_REQUEST_TRAFFIC_HANDLING_LOGIC:--------------://
 
-            switch( sob.server_req.url.toUpperCase() ){ case 
+            
+
+            switch( 
+                sob.server_req.url
+                .toUpperCase().split("/").join("/")
+            ){ case 
             "IP":{
 
                 sob.server_res.write("[IP]");
