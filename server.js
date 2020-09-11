@@ -81,33 +81,10 @@
             switch( url_sanitized ){ case 
             "IP":{
 
-                const IP=(()=>{
-                    var R=( sob.server_req );
-                    var ip=("NOT_SET");
-
-                    if(R.headers['x-forwarded-for']) {
-
-                        ip = R.headers['x-forwarded-for']
-                        .split(",")[0];
-
-                    }else 
-                    if( 1
-                    && R.connection 
-                    && R.connection.remoteAddress
-                    ) {
-
-                        ip = R.connection.remoteAddress;
-
-                    }else{
-
-                        ip = R.ip;
-
-                    };;
-
-                    return( ip );
-                })();
+                var ip_data=WhatsMyInternetProtocolAddress(sob);
+                const IP2=( ip_data.IP2 );
         
-                sob.server_res.write( "[IP]:" + IP );
+                sob.server_res.write( "[IP2]:" + IP2 );
 
             };break;case 
             "WHATEVER":{
@@ -233,3 +210,37 @@
     });; //:InitDatabase:readFile      //:-------------------://
     });; //:InitDatabase:PROMISE       //:-------------------://
     };;  //:InitDatabase:BODY          //:-------------------://
+
+
+    function WhatsMyInternetProtocolAddress( sob ){
+
+        const IP2=(()=>{
+            var R=( sob.server_req );
+            var ip=("NOT_SET");
+        
+            if(R.headers['x-forwarded-for']) {
+        
+                ip = R.headers['x-forwarded-for']
+                .split(",")[0];
+        
+            }else 
+            if( 1
+            && R.connection 
+            && R.connection.remoteAddress
+            ) {
+        
+                ip = R.connection.remoteAddress;
+        
+            }else{
+        
+                ip = R.ip;
+        
+            };;
+        
+            return( ip );
+        })();
+
+        return({ 
+            IP2:IP2
+        });;
+    };;
