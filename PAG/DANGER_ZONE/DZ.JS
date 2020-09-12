@@ -46,7 +46,7 @@ function AHK_NEW_JQueryForm_Post(){ "use strict"
 
         let url =(""                                    
             +"https://"                                 
-            +"njs-paypal-01.herokuapp.com/     
+            +"njs-paypal-01.herokuapp.com/"  
             +"DANGER_ZONE.API"                       
         );;
         let xhr = new XMLHttpRequest();
