@@ -24,9 +24,9 @@ function AHK_NEW_JQueryForm_Post(){ "use strict"
     const _2020_09_11_=""
     ,          I="<input>"
     ,          T="<textarea>"
-    ,   T_I=$( T ).attr({ "cols":"64" , "rows":"64" })
+    ,   T_I=$( T ).attr({ "cols":"64" , "rows":"32" })
     ,   BTN=$( I ).attr({ "type":"button", "value":"BTN" })
-    ,   T_O=$( T ).attr({ "cols":"64" , "rows":"64" })
+    ,   T_O=$( T ).attr({ "cols":"64" , "rows":"32" })
     ;;
 
     //:Graph/Tree structure only here:
@@ -38,7 +38,31 @@ function AHK_NEW_JQueryForm_Post(){ "use strict"
 
     BTN.on("click",(j_q_evt)=>{
 
-        console.log("[BUTTON_CLICKED]");
+        let dat={
+            a:"aaa"
+        ,   b:"bbb"
+        ,   c:"ccc"
+        };;
+
+        let url =(""                                    
+            +"https://"                                 
+            +"njs-paypal-01.herokuapp.com/     
+            +"DANGER_ZONE.API"                       
+        );;
+        let xhr = new XMLHttpRequest();
+            xhr.open("POST",url);
+            xhr.send();
+            xhr.onreadystatechange=(e)=>{
+                console.log(e                 );
+                console.log( xhr.status       );
+                console.log( xhr.readyState   );
+                console.log( xhr.responseText );
+                if( xhr.readyState===4 ){
+                     
+                    T_O.text( xhr.responseText );
+
+                };;
+            };;
 
     });;
 
@@ -46,3 +70,6 @@ function AHK_NEW_JQueryForm_Post(){ "use strict"
 
 
 AHK_NEW_JQueryForm_Post();
+
+
+ 
