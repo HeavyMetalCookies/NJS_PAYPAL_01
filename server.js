@@ -273,6 +273,31 @@
 
         sob.server_res.write( "[DangerZone]" );
 
+        if( 1 == sob.server_req.body.debug_payload ){
+
+            sob.server_res.write(
+                JSON.stringify( sob.server_req.body )
+            );;
+
+        }else
+        if( 0 == sob.server_req.body.debug_payload ){
+
+            sob.server_res.write("[TODO:payload_handle]");
+    
+        }else{
+
+            sob.server_res.write("[MALFORMED_PAYLOAD]");
+            sob.server_res.write(
+
+                /** Debug the faulty payload by returning    **/
+                /** it to the sender.                        **/
+                JSON.stringify( sob.server_req.body )
+    
+            );;
+
+        };;
+            
+
     };;
 
     function ServeFileSync( sob , file_path ){
