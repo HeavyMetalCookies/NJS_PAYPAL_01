@@ -59,7 +59,7 @@ function AHK_NEW_JQueryForm_Post(){ "use strict"
                 console.log( xhr.responseText );
                 if( xhr.readyState===4 ){
                      
-                    T_O.text( xhr.responseText );
+                    T_O.val(()=>{ return(xhr.responseText); });
 
                 };;
             };;
