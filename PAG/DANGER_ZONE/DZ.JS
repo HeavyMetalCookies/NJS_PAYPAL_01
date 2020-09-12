@@ -24,9 +24,9 @@ function AHK_NEW_JQueryForm_Post(){ "use strict"
     const _2020_09_11_=""
     ,          I="<input>"
     ,          T="<textarea>"
-    ,   T_I=$( T ).attr({ "cols":"64" , "rows":"128" })
+    ,   T_I=$( T ).attr({ "cols":"64" , "rows":"64" })
     ,   BTN=$( I ).attr({ "type":"button", "value":"BTN" })
-    ,   T_O=$( T ).attr({ "cols":"64" , "rows":"128" })
+    ,   T_O=$( T ).attr({ "cols":"64" , "rows":"64" })
     ;;
 
     //:Graph/Tree structure only here:
@@ -36,6 +36,11 @@ function AHK_NEW_JQueryForm_Post(){ "use strict"
     ,   T_O //:Text___Output
     ]);
 
+    BTN.on("click",(j_q_evt)=>{
+
+        console.log("[BUTTON_CLICKED]");
+
+    });;
 
 };;
 
